@@ -1,3 +1,4 @@
+let topButtons = ["Clear", "Backspace"];
 let row1Left = [7, 8, 9];
 let row2Left = [4, 5, 6];
 let row3Left = [1, 2, 3];
@@ -15,6 +16,7 @@ function createButtons(array, location) {
   });
 }
 
+createButtons(topButtons, document.querySelector(".btns-top"));
 createButtons(row1Left, document.querySelector(".btn-row1"));
 createButtons(row2Left, document.querySelector(".btn-row2"));
 createButtons(row3Left, document.querySelector(".btn-row3"));

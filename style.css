@@ -3,24 +3,29 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.btn-left {
+.btns-top {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 }
-.btn-right {
-  display: flex;
-  flex-direction: column;
+.btns-top button {
+  width: 150px;
+  height: 50px;
+  margin: 5px;
 }
-
 .btns-middle {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.btn-left,
+.btn-right {
+  display: flex;
+  flex-direction: column;
+}
 
-button {
-  height: 50px;
-  width: 100px;
+.btns-middle button {
+  height: 70px;
+  width: 70px;
   margin: 5px;
 }
 
@@ -30,12 +35,15 @@ button {
   justify-content: space-around;
   align-items: center;
   height: 700px;
-  width: 500px;
+  width: 400px;
   border: 1px solid black;
+  border-radius: 5px;
+  background-color: rgb(215, 213, 213);
 }
 .calculator-screen {
   border: 1px solid black;
   height: 200px;
-  width: 420px;
+  width: 320px;
   border-radius: 10px;
+  background-color: rgb(222, 253, 243);
 }
