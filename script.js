@@ -1,38 +1,25 @@
-let numberBtns = document.querySelector(".btns-left");
-let operationButtons = document.querySelector(".btns-right");
-const operatorOptions = ["÷", "x", "-", "+"];
-let bottomButtons = [".", 0, "="];
-//number buttons 1-9 with value
-for (let i = 9; i > 0; i--) {
-  let button = document.createElement("button");
-  button.innerText = i;
-  button.setAttribute("value", i);
-  numberBtns.style.gridTemplateColumns = `repeat(3,1fr)`;
-  numberBtns.style.gridTemplateRows = `repeat(3,20px)`;
-  numberBtns.appendChild(button);
+let row1Left = [7, 8, 9];
+let row2Left = [4, 5, 6];
+let row3Left = [1, 2, 3];
+let row4Left = [".", 0, "="];
+let operatorOptions = ["÷", "x", "-", "+"];
+let leftButtons = document.querySelector(".btn-left");
+let operatorButtons = document.querySelector(".btn-right");
+
+function createButtons(array, location) {
+  array.forEach((option) => {
+    let button = document.createElement("button");
+    button.value = option;
+    button.innerText = `${option}`;
+    location.appendChild(button);
+  });
 }
-//numbers for functions
-operatorOptions.forEach((option) => {
-  let button = document.createElement("button");
-  button.innerText = `${option}`;
-  operationButtons.appendChild(button).classList.add("btn-operator");
-});
 
-//clear button, delete button,0
-
-// let operatorOptions = [add, subtract, multiply, divide, clear, backSpace, equals];
-// function operator(operator) {
-    
-//   return operator();
-// }
-
-bottomButtons.forEach((option) => {
-  let button = document.createElement("button");
-  button.innerText = `${option}`;
-  //   button.setAttribute("value", option);
-  console.log(button);
-  numberBtns.appendChild(button);
-});
+createButtons(row1Left, document.querySelector(".btn-row1"));
+createButtons(row2Left, document.querySelector(".btn-row2"));
+createButtons(row3Left, document.querySelector(".btn-row3"));
+createButtons(row4Left, document.querySelector(".btn-row4"));
+createButtons(operatorOptions, operatorButtons);
 
 let add = (a, b) => a + b;
 let subtract = (a, b) => a - b;
@@ -41,10 +28,3 @@ let divide = (a, b) => a / b;
 let clear = () => console.log("cleared");
 let backSpace = () => console.log("delete");
 let equals = () => console.log("equals");
-
-function createButtons(array){
-    array.forEach((option)=>{
-        let button=document.createElement("button");
-        button.innerText= `${option}`;
-    })
-}
