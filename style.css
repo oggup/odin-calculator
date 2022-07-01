@@ -10,15 +10,13 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: auto;
-  padding: 10px;
+  height: 600px;
   width: 400px;
   border: 1px solid black;
   border-radius: 10px;
   gap: 10px;
 }
-
-.calculator-screen {
+ .calculator-screen {
   border: 1px solid black;
   height: 100px;
   width: 300px;
@@ -26,31 +24,24 @@ body {
 }
 
 .calculator-btns {
+}
+.btns-middle {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
   border: 1px solid black;
-  width: 300px;
-  height: auto;
+  border-radius: 10px;
 }
 
 .btns-left {
   display: grid;
-  height: 100px;
-  width: 210px;
-  gap: 10px;
+  border: 1px solid black;
+  background-color: red;
 }
 
 .btns-right {
   display: flex;
   flex-direction: column;
-  justify-content:space-around;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  gap:1px;
+  background-color: blue;
 }
 
-.btn-operator {
-  gap:10px;
-  width: 70px;
+button {
 }
