@@ -16,13 +16,13 @@ let equals = () => console.log("equals");
 
 const log = (e) => {
   document.querySelector(".bottom-screen").append(e.target.value);
+  nextValue = document.querySelector(".bottom-screen").innerText;
 };
 const operator = (e) => {
   console.log(e.target.value);
-  heldValue = document.querySelector(".bottom-screen").innerText;
+  heldValue = nextValue;
   document;
-  //   e.target.value === "+"? add(heldValue, nextValue):
-  document.querySelector(".top-screen").append(heldValue);
+  document.querySelector(".top-screen").append(heldValue, e.target.value);
   console.log(heldValue);
   document.querySelector(".bottom-screen").innerText = "";
 };
