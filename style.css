@@ -40,7 +40,20 @@ body {
   border-radius: 5px;
   background-color: rgb(215, 213, 213);
 }
+
+.top-screen {
+  height: 100px;
+  text-align: right;
+  font-size: 20px;
+}
+.bottom-screen {
+  text-align: right;
+  padding: 30px;
+  font-size: 60px;
+}
 .calculator-screen {
+  display: flex;
+  flex-direction: column;
   border: 1px solid black;
   height: 200px;
   width: 320px;
