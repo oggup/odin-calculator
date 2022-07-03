@@ -19,11 +19,10 @@ const log = (e) => {
   nextValue = document.querySelector(".bottom-screen").innerText;
 };
 const operator = (e) => {
-  console.log(e.target.value);
+  console.log(nextValue, "NEXT");
   heldValue = nextValue;
-  document;
+
   document.querySelector(".top-screen").append(heldValue, e.target.value);
-  console.log(heldValue);
   document.querySelector(".bottom-screen").innerText = "";
 };
 
