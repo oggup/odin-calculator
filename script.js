@@ -1,14 +1,16 @@
 //initial values
-
 let a = null;
 let b = null;
 let heldOperator = null;
-let operations = {
-  add: (a, b) => Number(a) + Number(b),
-  multiply: (a, b) => Number(a) * Number(b),
-  divide: (a, b) => Number(a) / Number(b),
-  subtract: (a, b) => Number(a) - Number(b),
-};
+let operations = [
+  {
+    function: (a, b) => Number(a) + Number(b),
+    value: "+",
+  },
+  { function: (a, b) => Number(a) * Number(b), value: "x" },
+  { function: (a, b) => Number(a) / Number(b), value: "÷ " },
+  { function: (a, b) => Number(a) - Number(b), value: "-" },
+];
 
 //buttons
 let topButtons = ["Clear", "Backspace"];
@@ -24,37 +26,41 @@ let bottomScreen = document.querySelector(".bottom-screen");
 let leftButtons = document.querySelector(".btn-left");
 let operatorButtons = document.querySelector(".btn-right");
 
-//create buttons with event listenors
+//create buttons with event listeners
 function createButtons(array, location, clickFunction) {
   array.forEach((option) => {
     let button = document.createElement("button");
-    button.value = option;
-    button.innerText = `${option}`;
+    option.value
+      ? (button.value = option.value) &&
+        button.setAttribute("operator", option.function)
+      : (button.value = option);
+    button.innerText = button.value;
     button.addEventListener("click", clickFunction);
     location.appendChild(button);
   });
 }
-
+//click functions
 const numberClick = (e) => {
   bottomScreen.append(e.target.value);
   b = bottomScreen.innerText;
+  console.log(e.target)
+  console.log("b", b)
 };
 
 const operator = (e) => {
+  console.log(e.target);
   a = Number(a) + Number(b);
   topScreen.innerText = a;
   bottomScreen.innerText = "";
 };
 
+//function that returns operation if operation = button operation
+//find operation that is equal
+
+//buttons being created
 createButtons(topButtons, document.querySelector(".btns-top"), numberClick);
 createButtons(row1Left, document.querySelector(".btn-row1"), numberClick);
 createButtons(row2Left, document.querySelector(".btn-row2"), numberClick);
 createButtons(row3Left, document.querySelector(".btn-row3"), numberClick);
 createButtons(row4Left, document.querySelector(".btn-row4"), numberClick);
-createButtons(operatorOptions, operatorButtons, operator);
-
-let backSpace = () => console.log("delete");
-let equals = () => console.log("equals");
-
-//use objects and keys to get value of operators: symbol//
-//add:"+"make array to make buttons and what is shown on screen//
+createButtons(operations, operatorButtons, operator);
