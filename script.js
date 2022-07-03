@@ -30,10 +30,7 @@ let operatorButtons = document.querySelector(".btn-right");
 function createButtons(array, location, clickFunction) {
   array.forEach((option) => {
     let button = document.createElement("button");
-    option.value
-      ? (button.value = option.value) &&
-        button.setAttribute("operator", option.function)
-      : (button.value = option);
+    option.value ? (button.value = option.value) : (button.value = option);
     button.innerText = button.value;
     button.addEventListener("click", clickFunction);
     location.appendChild(button);
@@ -43,13 +40,17 @@ function createButtons(array, location, clickFunction) {
 const numberClick = (e) => {
   bottomScreen.append(e.target.value);
   b = bottomScreen.innerText;
-  console.log(e.target)
-  console.log("b", b)
+  console.log(e.target);
+  console.log("b", b);
 };
 
 const operator = (e) => {
-  console.log(e.target);
-  a = Number(a) + Number(b);
+  let operator = operations.filter((f) => {
+    if (f.value === e.target.value) {
+      return f;
+    }
+  });
+  a = operator[0].function(a, b);
   topScreen.innerText = a;
   bottomScreen.innerText = "";
 };
