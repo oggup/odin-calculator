@@ -40,10 +40,10 @@ function createButtons(array, location, clickFunction) {
 const numberClick = (e) => {
   bottomScreen.append(e.target.value);
   b = bottomScreen.innerText;
-  console.log(e.target);
-  console.log("b", b);
 };
-
+//sets the right operator functions to the button
+//need to find a way to hold on on
+//if statement end equals function
 const operator = (e) => {
   let operator = operations.filter((f) => {
     if (f.value === e.target.value) {
