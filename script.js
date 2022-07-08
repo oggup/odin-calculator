@@ -27,7 +27,7 @@ const calculate = () => {
           : "ERROR: CAN'T DIVIDE BY ZERO"
         : heldOperator === "-"
         ? Number(a) - Number(b)
-        : false;
+        : null;
     bottomScreen.innerText = null;
     console.log(a, heldOperator, b, "=", result);
     a = result;
