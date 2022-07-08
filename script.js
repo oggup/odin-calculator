@@ -4,12 +4,15 @@ let b = null;
 let heldOperator = null;
 //click functions
 const numberClick = (e) => {
+  if (a !== null && heldOperator === null) {
+    topScreen.innerText = null;
+    a = null;
+  }
+  console.log(heldOperator);
   bottomScreen.append(e.target.value);
   b = bottomScreen.innerText;
 };
 const calculate = () => {
-  console.log("equals");
-  console.log(heldOperator);
   if (a !== null && b !== null) {
     let result =
       heldOperator === "+"
@@ -27,8 +30,10 @@ const calculate = () => {
     console.log(a, heldOperator, b, "=", result);
     a = result;
     topScreen.innerText = a;
+    heldOperator = null;
   }
 };
+
 const backSpace = () => {
   console.log("backspace");
 };
@@ -41,16 +46,24 @@ const clear = () => {
   bottomScreen.innerText = b;
 };
 const operatorClick = (e) => {
-  if (a !== null) {
-    heldOperator = e.target.value;
-    topScreen.innerText = `${a} ${heldOperator}`;
-    bottomScreen.innerText = null;
-  } else if (a === null) {
-    heldOperator = e.target.value;
+  if (a === null) {
     a = b;
+    checkOp(e.target.value);
+  } else if (b === null) {
+    checkOp(e.target.value);
+  } else {
+    b = null;
+    calculate();
+    heldOperator = e.target.value;
     topScreen.innerText = `${a} ${heldOperator}`;
     bottomScreen.innerText = null;
   }
+};
+const checkOp = (operator) => {
+  heldOperator = operator;
+  topScreen.innerText = `${a} ${heldOperator}`;
+  bottomScreen.innerText = null;
+  b = null;
 };
 //dom locations
 let topScreen = document.querySelector(".top-screen");
