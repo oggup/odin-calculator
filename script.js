@@ -10,46 +10,48 @@ const numberClick = (e) => {
 const calculate = () => {
   console.log("equals");
   console.log(heldOperator);
-  if(a&&b){
+  if (a !== null && b !== null) {
     a =
-    heldOperator === "+"
-      ? Number(a) + Number(b)
-      : heldOperator === "x"
-      ? Number(a) * Number(b)
-      : heldOperator === "÷"
-      ? b > 0
-        ? Number(a) / Number(b)
-        : "ERROR: CAN'T DIVIDE BY ZERO"
-      : heldOperator === "-"
-      ? Number(a) - Number(b)
-      : false;
+      heldOperator === "+"
+        ? Number(a) + Number(b)
+        : heldOperator === "x"
+        ? Number(a) * Number(b)
+        : heldOperator === "÷"
+        ? b > 0
+          ? Number(a) / Number(b)
+          : "ERROR: CAN'T DIVIDE BY ZERO"
+        : heldOperator === "-"
+        ? Number(a) - Number(b)
+        : false;
 
-  topScreen.innerText = a;
-  bottomScreen.innerText = null;
-  console.log(a, heldOperator, b, "=", a);
-
+    topScreen.innerText = a;
+    b = null;
+    bottomScreen.innerText = null;
+    console.log(a, heldOperator, b, "=", a);
   }
-  
 };
 const backSpace = () => {
   console.log("backspace");
 };
 const clear = () => {
   console.log("clear");
-  a=null;
-  b=null;
-  heldOperator=null;
+  a = null;
+  b = null;
+  heldOperator = null;
   topScreen.innerText = a;
   bottomScreen.innerText = b;
-
 };
 const operatorClick = (e) => {
-
-  heldOperator = e.target.value;
-  console.log(heldOperator);
-  a = b;
-  topScreen.innerText = `${a} ${heldOperator}`;
-  bottomScreen.innerText = null;
+  if (a !== null) {
+    heldOperator = e.target.value;
+    topScreen.innerText = `${a} ${heldOperator}`;
+    bottomScreen.innerText = null;
+  } else if (a === null) {
+    heldOperator = e.target.value;
+    a = b;
+    topScreen.innerText = `${a} ${heldOperator}`;
+    bottomScreen.innerText = null;
+  }
 };
 //dom locations
 let topScreen = document.querySelector(".top-screen");
