@@ -10,7 +10,8 @@ const numberClick = (e) => {
 const calculate = () => {
   console.log("equals");
   console.log(heldOperator);
-  a =
+  if(a&&b){
+    a =
     heldOperator === "+"
       ? Number(a) + Number(b)
       : heldOperator === "x"
@@ -24,21 +25,31 @@ const calculate = () => {
       : false;
 
   topScreen.innerText = a;
-  bottomScreen.innerText = "";
+  bottomScreen.innerText = null;
   console.log(a, heldOperator, b, "=", a);
+
+  }
+  
 };
 const backSpace = () => {
   console.log("backspace");
 };
 const clear = () => {
   console.log("clear");
+  a=null;
+  b=null;
+  heldOperator=null;
+  topScreen.innerText = a;
+  bottomScreen.innerText = b;
+
 };
 const operatorClick = (e) => {
+
   heldOperator = e.target.value;
   console.log(heldOperator);
   a = b;
   topScreen.innerText = `${a} ${heldOperator}`;
-  bottomScreen.innerText = "";
+  bottomScreen.innerText = null;
 };
 //dom locations
 let topScreen = document.querySelector(".top-screen");
