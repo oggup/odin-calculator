@@ -7,17 +7,33 @@ const numberClick = (e) => {
   bottomScreen.append(e.target.value);
   b = bottomScreen.innerText;
 };
-const calculate = (operator, a, b) => {
-  console.log("we here");
+const calculate = () => {
+  console.log("equals");
+  console.log(heldOperator);
+  let result =
+    heldOperator === "+"
+      ? Number(a) + Number(b)
+      : heldOperator === "x"
+      ? Number(a) * Number(b)
+      : heldOperator === "÷"
+      ? Number(a) / Number(b)
+      : heldOperator === "-"
+      ? Number(a) - Number(b)
+      : false;
+
+  console.log(a, heldOperator, b, "=", result);
+};
+const backSpace = () => {
+  console.log("backspace");
+};
+const clear = () => {
+  console.log("clear");
 };
 const operatorClick = (e) => {
-  let operator = operations.filter((f) => {
-    if (f.value === e.target.value) {
-      return f;
-    }
-  });
+  heldOperator = e.target.value;
+  console.log(heldOperator);
   a = b;
-  topScreen.innerText = `${a}  ${operator[0].value}`;
+  topScreen.innerText = `${a} ${heldOperator}`;
   bottomScreen.innerText = "";
 };
 //dom locations
@@ -26,7 +42,10 @@ let bottomScreen = document.querySelector(".bottom-screen");
 let leftButtons = document.querySelector(".btn-left");
 let operatorButtons = document.querySelector(".btn-right");
 //buttons
-let topButtons = ["Clear", "Backspace"];
+let topButtons = [
+  { function: clear, value: "Clear" },
+  { function: backSpace, value: "Backspace" },
+];
 let row1Left = [7, 8, 9];
 let row2Left = [4, 5, 6];
 let row3Left = [1, 2, 3];
@@ -57,7 +76,7 @@ function createButtons(array, location, clickFunction) {
   });
 }
 //buttons being created
-createButtons(topButtons, document.querySelector(".btns-top"), numberClick);
+createButtons(topButtons, document.querySelector(".btns-top"));
 createButtons(row1Left, document.querySelector(".btn-row1"), numberClick);
 createButtons(row2Left, document.querySelector(".btn-row2"), numberClick);
 createButtons(row3Left, document.querySelector(".btn-row3"), numberClick);
