@@ -11,7 +11,7 @@ const calculate = () => {
   console.log("equals");
   console.log(heldOperator);
   if (a !== null && b !== null) {
-    a =
+    let result =
       heldOperator === "+"
         ? Number(a) + Number(b)
         : heldOperator === "x"
@@ -23,11 +23,10 @@ const calculate = () => {
         : heldOperator === "-"
         ? Number(a) - Number(b)
         : false;
-
-    topScreen.innerText = a;
-    b = null;
     bottomScreen.innerText = null;
-    console.log(a, heldOperator, b, "=", a);
+    console.log(a, heldOperator, b, "=", result);
+    a = result;
+    topScreen.innerText = a;
   }
 };
 const backSpace = () => {
