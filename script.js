@@ -10,18 +10,22 @@ const numberClick = (e) => {
 const calculate = () => {
   console.log("equals");
   console.log(heldOperator);
-  let result =
+  a =
     heldOperator === "+"
       ? Number(a) + Number(b)
       : heldOperator === "x"
       ? Number(a) * Number(b)
       : heldOperator === "÷"
-      ? Number(a) / Number(b)
+      ? b > 0
+        ? Number(a) / Number(b)
+        : "ERROR: CAN'T DIVIDE BY ZERO"
       : heldOperator === "-"
       ? Number(a) - Number(b)
       : false;
 
-  console.log(a, heldOperator, b, "=", result);
+  topScreen.innerText = a;
+  bottomScreen.innerText = "";
+  console.log(a, heldOperator, b, "=", a);
 };
 const backSpace = () => {
   console.log("backspace");
