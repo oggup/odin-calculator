@@ -4,11 +4,13 @@ let b = null;
 let heldOperator = null;
 //click functions
 const numberClick = (e) => {
+  if (bottomScreen.innerText.includes(".") && e.target.value === ".") {
+    return;
+  }
   if (a !== null && heldOperator === null) {
     topScreen.innerText = null;
     a = null;
   }
-  console.log(heldOperator);
   bottomScreen.append(e.target.value);
   b = bottomScreen.innerText;
 };
