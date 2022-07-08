@@ -37,10 +37,12 @@ const calculate = () => {
 };
 
 const backSpace = () => {
-  console.log("backspace");
+  if (b !== null) {
+    b = b.slice(0, -1);
+    bottomScreen.innerText = b;
+  }
 };
 const clear = () => {
-  console.log("clear");
   a = null;
   b = null;
   heldOperator = null;
